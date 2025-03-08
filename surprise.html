@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Dea Tersayang 💕</title>
+    <link href="dea.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="gallery">
+        <img src="01.jpg" alt="Dea">
+        <img src="02.jpg" alt="Dea">
+        <img src="03.jpg" alt="Dea">
+    </div>
+
+    <h2 class="text">Terima Kasih Udah Hadir di Hidup Aku, Dea 💕</h2>
+
+    <div class="gallery">
+        <img src="04.jpg" alt="Dea">
+        <img src="05.jpg" alt="Dea">
+        <img src="06.jpg" alt="Dea">
+    </div>
+
+    <h3 class="end-text">Semoga Kita Bareng Terus Sampai Nanti 💕🔥</h3>
+
+    <div class="photo-bottom">
+        <img src="10.jpg" alt="Dea">
+    </div>
+
+    <audio id="lagu" autoplay loop>
+        <source src="lagu.mp3" type="audio/mp3">
+    </audio>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const audio = document.getElementById("lagu");
+        
+        setTimeout(() => {
+            audio.volume = 1;
+            audio.play().catch(err => console.log("Auto Play Dicekal 😭"));
+        }, 100);
+
+        document.body.addEventListener("click", () => {
+            audio.play();
+        });
+
+        let images = document.querySelectorAll('.gallery img');
+        let i = 0;
+        setInterval(() => {
+            images.forEach(img => img.style.opacity = 0);
+            images[i].style.opacity = 1;
+            i = (i + 1) % images.length;
+        }, 3000);
+
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+        });
+
+        setInterval(() => {
+            window.scrollBy(0, 1);
+            if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+                window.scrollTo(0, 0);
+            }
+        }, 50);
+    });
+
+    const jumlahBunga = 100;
+    for (let i = 0; i < jumlahBunga; i++) {
+        let bunga = document.createElement("div");
+        bunga.classList.add("bunga");
+        bunga.style.left = Math.random() * 100 + "vw";
+        bunga.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(bunga);
+    }
+</script>
+
+<style>
+    body {
+        margin: 0;
+        background: #000;
+        text-align: center;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        overflow-y: scroll;
+        height: 100vh;
+        scroll-behavior: smooth;
+    }
+    .container {
+        padding: 20px;
+    }
+    .gallery img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        margin: 10px;
+        border-radius: 10px;
+        transition: opacity 1s ease-in-out;
+        opacity: 0;
+    }
+    .gallery img:first-child {
+        opacity: 1;
+    }
+    .bunga {
+        position: fixed;
+        top: -10px;
+        width: 20px;
+        height: 20px;
+        background: pink;
+        opacity: 0.8;
+        border-radius: 50%;
+        animation: jatuh linear infinite;
+    }
+    @keyframes jatuh {
+        to {
+            transform: translateY(100vh);
+            opacity: 0;
+        }
+    }
+    .text, .end-text {
+        margin: 20px 0;
+        animation: muncul 2s ease-in-out infinite alternate;
+    }
+    @keyframes muncul {
+        from {
+            opacity: 0.6;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+</body>
+</html>
